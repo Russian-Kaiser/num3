@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ergrh
+namespace Поликлиника
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int receptionTimeInMinutes = 10;
+            int minuteAdmissionTime = 10;
             int hourInMinutes = 60;
 
-            Console.WriteLine("Вы заходите в поликлинику и увидели очередь..");
-            Console.Write("Сколько в ней было человек? - ");
+            Console.Write("Вы заходите в коридор, сколько человек вы увидели? - ");
             int queueLength = Convert.ToInt32(Console.ReadLine());
-            int waitingHours = (receptionTimeInMinutes * queueLength) / hourInMinutes;
-            int waitingMinutes = (queueLength * receptionTimeInMinutes) - (waitingHours * hourInMinutes);
-            Console.WriteLine($"Вам предстоит ожидать {waitingHours} час и {waitingMinutes} минут");
+            int minutesOfWaiting = minuteAdmissionTime * queueLength;
+            int hoursOfWaiting = minutesOfWaiting / hourInMinutes;
+            minutesOfWaiting = minutesOfWaiting % hourInMinutes;
+            Console.WriteLine($"Время ожидания: {hoursOfWaiting} час и {minutesOfWaiting} минут");
             Console.ReadKey();
         }
     }
