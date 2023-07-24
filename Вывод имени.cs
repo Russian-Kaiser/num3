@@ -14,16 +14,16 @@ namespace Вывод_имени
             string name = Console.ReadLine();
             Console.Write("Введите символ:");
             char symbol = Convert.ToChar(Console.ReadLine());
-            name = symbol + name + symbol;
+            string nameInBrackets = symbol + name + symbol;
             string symbolsLine = "";
 
-            for (int i = 0; i < name.Length; i++)
+            for (int i = 0; i < nameInBrackets.Length; i++)
             {
                 symbolsLine += symbol;
             }
 
             Console.WriteLine("\n" + symbolsLine);
-            Console.WriteLine(name);
+            Console.WriteLine(nameInBrackets);
             Console.WriteLine(symbolsLine);
             Console.ReadKey();
         }
