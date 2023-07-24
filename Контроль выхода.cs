@@ -11,22 +11,24 @@ namespace Контроль_выхода
         static void Main(string[] args)
         {
             string userInput = "";
-            bool exit = true;
+            string password = "exit";
+            bool isExit = true;
 
-            while(exit)
+            while (isExit)
             {
                 Console.Clear();
                 Console.Write("Введите 'exit', чтобы закончить цикл: ");
                 userInput = Console.ReadLine();
 
-                if (userInput == "exit")
-                    exit = false;
-
+                if (userInput == password)
+                {
+                    isExit = false;
+                }
                 else
                 {
                     Console.WriteLine("Неправильное значение");
                     Console.ReadKey();
-                } 
+                }
             }
 
             Console.ReadKey();
