@@ -10,27 +10,24 @@ namespace Программа_под_паролем
     {
         static void Main(string[] args)
         {
-            const int NumberOfAttempts = 3;
-            const string Password = "A1BC3";
+            int remainingAttempts = 0;
+            int numberOfAttempts = 3;
+            string password = "A1BC3";
             string userInput = "";
 
-            for (int i = 0; i < NumberOfAttempts; i++)
+            for (int i = 0; i < numberOfAttempts; i++)
             {
                 Console.Clear();
-                Console.Write($"У вас есть {NumberOfAttempts - i} попытки. \nВведите пароль: ");
+                remainingAttempts = numberOfAttempts - i;
+                Console.Write($"У вас есть {remainingAttempts} попытки. \nВведите пароль: ");
                 userInput = Console.ReadLine();
 
-                if(userInput == Password)
-                {
+                if (userInput == password)
                     Console.WriteLine("\nНачинается загрузка данных....");
-                    Console.ReadKey();
-                }
-
                 else
-                {
                     Console.WriteLine("\nНеправильный пароль! \nПопробуйте снова");
-                    Console.ReadKey();
-                }
+
+                Console.ReadKey();
             }
         }
     }
