@@ -17,7 +17,7 @@ namespace Контроль_выхода
             while (isExit)
             {
                 Console.Clear();
-                Console.Write("Введите 'exit', чтобы закончить цикл: ");
+                Console.Write($"Введите {password}, чтобы закончить цикл: ");
                 userInput = Console.ReadLine();
 
                 if (userInput == password)
