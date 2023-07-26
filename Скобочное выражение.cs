@@ -22,18 +22,18 @@ namespace Скобочное_выражение
                 if (line[i] == openBracket)
                 {
                     currentDepth++;
+
+                    if (currentDepth > maximumDepth)
+                        maximumDepth++;
                 }
                 else if (line[i] == closedBracket)
                 {
                     currentDepth--;
-                    maximumDepth++;
                 }
 
                 if (currentDepth < 0)
                     break;
             }
-
-            maximumDepth--;
 
             if (currentDepth == 0)
                 Console.Write($"Выражение корректно! \nМаксимальная глубина {maximumDepth}");
