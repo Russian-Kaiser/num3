@@ -10,48 +10,33 @@ namespace Скобочное_выражение
     {
         static void Main(string[] args)
         {
-            int counter = 0;
-            int nestingDepth = 0;
             int currentDepth = 0;
-            char start = '(';
-            char end = ')';
-            Console.Write("Введите выражение из символов '(' и ')' - ");
+            int maximumDepth = 0;
+            char openBracket = '(';
+            char closedBracket = ')';
+            Console.Write($"Введите выражение из символов {openBracket} и {closedBracket} - ");
             string line = Console.ReadLine();
 
             for (int i = 0; i < line.Length; i++)
             {
-                currentDepth = i;
-
-                if (line[i] == start)
+                if (line[i] == openBracket)
                 {
-                    counter++;
+                    currentDepth++;
                 }
-                else if (line[i] == end)
+                else if (line[i] == closedBracket)
                 {
-                    if (i < line.Length)
-                    {
-                        currentDepth++;
-
-                        if (line[currentDepth - 1] != start)
-                        {
-                            nestingDepth++;
-                        }
-                           
-                        currentDepth--;
-                    }
-                    counter--;
+                    currentDepth--;
+                    maximumDepth++;
                 }
 
-                if (counter < 0)
-                {
+                if (currentDepth < 0)
                     break;
-                }
             }
 
-            nestingDepth = nestingDepth - 1;
+            maximumDepth--;
 
-            if (counter == 0)
-                Console.Write($"Выражение корректно! \nМаксимальная глубина {nestingDepth}");
+            if (currentDepth == 0)
+                Console.Write($"Выражение корректно! \nМаксимальная глубина {maximumDepth}");
             else
                 Console.Write("Выражение некорректно!");
 
