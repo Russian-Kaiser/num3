@@ -6,9 +6,10 @@ namespace Split
     {
         static void Main(string[] args)
         {
+            char separator = ' ';
             Console.Write("Введите текст:");
             string text = Console.ReadLine();
-            string [] words = text.Split(' ');
+            string [] words = text.Split(separator);
 
             foreach (var word in words)
             {
