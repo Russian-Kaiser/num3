@@ -10,32 +10,34 @@ namespace Сортировка_чисел
     {
         static void Main(string[] args)
         {
+            int tempNumber = 0;
             int arrayLength = 10;
             int minimumNumber = 0;
             int maxsimumNumber = 100;
             Random random = new Random();
             int[] array = new int[arrayLength];
-            int[] sortedArray = new int[arrayLength];
 
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = random.Next(minimumNumber,maxsimumNumber);
+                array[i] = random.Next(minimumNumber, maxsimumNumber);
                 Console.Write(array[i] + " ");
             }
 
             Console.WriteLine();
 
-            for (int j = 0; j < sortedArray.Length; j++)
+            for (int j = 0; j < array.Length; j++)
             {
-                sortedArray[j] = array.Min();
-
-                for (int t = 0; t < array.Length; t++)
+                for (int k = j + 1; k < array.Length; k++)
                 {
-                    if (array[t] == sortedArray[j])
-                        array[t] = 1000;
+                    if(array[j] > array[k])
+                    {
+                        tempNumber = array[j];
+                        array[j] = array[k];
+                        array[k] = tempNumber;
+                    }
                 }
 
-                Console.Write(sortedArray[j] + " ");
+                Console.Write(array[j] + " ");
             }
 
             Console.ReadKey();
