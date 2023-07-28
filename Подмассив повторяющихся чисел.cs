@@ -10,12 +10,14 @@ namespace Подмассив_повторений_чисел
     {
         static void Main(string[] args)
         {
-            int number = 0;
-            int numberOfRepetitions = 0;
-            int minimumNumber = 0;
-            int maximumNumber = 11;
-            int amountOfValues = 30;
             Random random = new Random();
+            int maxNumberOfRepetitions = 0;
+            int numberOfRepetitions = 0;
+            int amountOfValues = 30;
+            int maximumNumber = 11;
+            int minimumNumber = 0;
+            int maxValue = 0;
+            int value = 0;
             int[] numbers = new int[amountOfValues];
 
             for (int i = 0; i < numbers.Length; i++)
@@ -24,18 +26,31 @@ namespace Подмассив_повторений_чисел
                 Console.Write(numbers[i] + " ");
             }
 
-            foreach (var value in numbers)
+            for (int j = 1; j < numbers.Length; j++)
             {
-                if (numbers.Where(x => x.Equals(value)).Count() > numberOfRepetitions)
+                if (maxNumberOfRepetitions < numberOfRepetitions)
                 {
-                    numberOfRepetitions = numbers.Where(x => x.Equals(value)).Count();
-                    number = value;
+                    maxValue = value;
+                    maxNumberOfRepetitions = numberOfRepetitions;
+                }
+
+                if (numbers[j - 1] == numbers[j])
+                {
+                    value = numbers[j];
+                    numberOfRepetitions++;
+                }
+                else
+                {
+                    numberOfRepetitions = 1;
                 }
             }
 
-            Console.WriteLine($"\nЧисло: {number}. \nКоличество повторений: {numberOfRepetitions}.");
-            Console.ReadKey();
+            if (maxNumberOfRepetitions > 1)
+                Console.WriteLine($"\nЧисло: {maxValue}. \nКоличество повторений: {maxNumberOfRepetitions}.");
+            else
+                Console.WriteLine("Нет повторяющихся чисел.");
 
+            Console.ReadKey();
         }
     }
 }
